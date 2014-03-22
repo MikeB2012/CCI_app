@@ -1,0 +1,9 @@
+- if(achievements.length)
+  table.table.table-bordered
+    tr
+      th Achievement
+      th Contribution
+        each ach in achievements
+          tr
+            td #{ach.achievement}
+            td #{ach.contribution}

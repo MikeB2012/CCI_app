@@ -1,0 +1,22 @@
+form#AddAchievement(name="addachievement"
+                    method="post"
+                    action="/")
+                    
+  textarea.form-control#achievement(type="text"
+                                    rows = "3"
+                                    placeholder="Concisely state your achievment.."
+                                    name="statement")
+                                    
+  input.form-control#contribution(type="text" 
+                                  placeholder="contribution" 
+                                  name="contribution")
+                                  
+  button.btn.btn-xs(type="submit")  Complete!
+  
+main
+    main#descriptors
+      h3 Descriptors
+        ul
+          each descrip in descripbuttons
+            button.btn.btn-xs#descrip
+              = descrip.value

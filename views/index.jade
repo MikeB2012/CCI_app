@@ -1,0 +1,32 @@
+extends layout
+
+block content
+
+  header
+    h1.text-center CCI
+    p.text-center Descriptors: state a career highlight then choose those descriptors that you feel describe what you contributed to the achievement.
+  br
+
+  ul.nav.nav-tabs
+    li.active
+      a(href="main#nav" data-toggle="tab") Achievements and Contributions
+    li
+      a(href="main#article" data-toggle="tab") Add Achievement
+    li
+      a(href="main#wordtally" data-toggle="tab") Word Tally
+
+  .tab-content
+    main#nav.tab-pane.active
+      h3  List of 3-8 Achievements
+      
+    main#article.tab-pane 
+      h3 Achievment Entry
+      include addAchievement
+      
+    main#wordtally.tab-pane oh holy crap
+
+  
+
+  footer footer
+
+

@@ -1,0 +1,10 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "bootstrap-css": "latest",
+    "bootstrap-javascript": "latest",
+    "react": "latest"
+  }
+}
