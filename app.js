@@ -7,36 +7,21 @@
 var express = require('express')
   , routes = require('./routes/index')
   , user = require('./routes/user')
-  , myk = require('./public/javascripts/myscripts')
   , http = require('http')
   , path = require('path')
-  , nedb = require('nedb')
   , tingo = require('tingodb')
+  , database = require('./data/database.js');
   ;
 
 /**
- * Initialize Express as the variable 'app'
- * and create instances of the databases,
- * one for user achievement data and one for
- * the word data (word stats).
+ * Initialize Express as the variable 'app'.
  */ 
 var app = express();
-/*
- * Create a database with two collections.
- * 'wordinfo' is a database with all the descriptor words.
- * It is populated in 'myscript.js' when 'myk' is created (see above)
- * 'userinfo' is created by the user entering their achievements and 
- * their contributions, the latter via 'descriptor buttons
- */
-var db = {};
-db.userinfo = new nedb();
-db.wordinfo = myk.wordinfo;
 
 /**
  * Configure Express including specifying the view engine (Jade)
  * and the CSS engine (Stylus).  This is generated automatically
- * when you run Express to create the directory structure, it's
- * just good to know.
+ * when you run Express with ""--css stylus" option.
  */
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -61,8 +46,8 @@ app.configure('development', function(){
  * back e.g. a request for '/' triggers a call to 'index.js' that returns a 
  * rendering of 'index.jade' compiled to html.
  */
-app.get('/', routes.index(db));
-app.post('/', routes.newachievement(db));
+app.get('/', routes.index(database.db));
+
 
 /**
  *  Start the server
