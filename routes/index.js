@@ -11,8 +11,12 @@ exports.index = function(db){
    * for descriptor words.
    */
   return function(req,res) {
-    db.wordinfo.find({}).sort({index: 1}).exec(function(err,docs) {
-      res.render('index', { title: 'CCI' , "descripbuttons": docs});
+    db.wordinfo.find({}).sort({contribution: 1}).exec(function(err,docs) {
+      db.userinfo.find({}).sort({TaskNumber: 1}).exec(function(err,tasks) {
+        console.log(tasks + "tasks");
+        res.render('index.jade', { title: 'CCI' , "descripbuttons": docs, "achievements": tasks});
+      });
+      
     });
   };
 };

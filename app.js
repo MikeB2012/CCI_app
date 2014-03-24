@@ -10,7 +10,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , tingo = require('tingodb')
-  , database = require('./data/database.js');
+  , database = require('./data/database');
   ;
 
 /**

@@ -14,9 +14,9 @@ form#AddAchievement(name="addachievement"
   button.btn.btn-xs(type="submit")  Complete!
   
 main
-    main#descriptors
-      h3 Descriptors
-        ul
-          each descrip in descripbuttons
-            button.btn.btn-xs#descrip
-              = descrip.value
+  main#descriptors
+    h3 Descriptors
+      ul
+        each descrip in descripbuttons
+          button.btn.btn-xs#descrip
+            = descrip.contribution

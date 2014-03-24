@@ -1,5 +1,7 @@
 "use strict";
-
+/*
+ * DATABASE Module
+ */
 console.log('Running database');
 /*
  * Read a .csv file that contains a list

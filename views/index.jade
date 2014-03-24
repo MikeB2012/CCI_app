@@ -8,22 +8,29 @@ block content
   br
 
   ul.nav.nav-tabs
-    li.active
-      a(href="main#nav" data-toggle="tab") Achievements and Contributions
     li
+      a(href="main#nav" data-toggle="tab") Achievements and Contributions
+    li.active
       a(href="main#article" data-toggle="tab") Add Achievement
     li
       a(href="main#wordtally" data-toggle="tab") Word Tally
 
   .tab-content
-    main#nav.tab-pane.active
+    main#nav.tab-pane
       h3  List of 3-8 Achievements
-      //- include listAchievement
+        include listAchievement
       
-    main#article.tab-pane 
+    main#article.tab-pane.active 
       h3 Achievment Entry
       //- include addAchievement
-      
+      main
+        main#descriptors
+          h3 Descriptors
+            ul
+              each descrip in descripbuttons
+                button.btn.btn-xs#descrip
+                  = descrip.contribution
+                  
     main#wordtally.tab-pane oh holy crap
 
   
