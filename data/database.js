@@ -1,7 +1,3 @@
-/**
- * @author Dad
- */
-
 "use strict";
 
 console.log('Running database');
@@ -18,25 +14,21 @@ var filename = './data/descriptors.csv';  // location of .csv file
  * Initialize two databases:
  *    wordinfo - all word descriptors
  *    userinfo - keeper of user entered data ie.- achievments, contributions
- * Then, create a unique index for each document in each db
  */
 var db = {};
 db.wordinfo = new nedb();
 db.userinfo = new nedb();
-db.wordinfo.ensureIndex({ fieldName: 'descriptor', unique: true});
 
 /*
  * Populate db.wordinfo
  */
 
-var descriptors = fs.readFileSync(filename, 'utf-8');  //read file _synchronously
-descriptors = descriptors.split('\r\n');  //convert to an array
-console.log(descriptors);
-descriptors.forEach( function (descriptor) {  //Fill in the database with "descriptors"
+var descriptors = fs.readFileSync(filename, 'utf-8');   //read file _synchronously
+descriptors = descriptors.split('\r\n');                //convert to an array
+descriptors.forEach( function (descriptor) {            //Fill in the database with "descriptors"
   db.wordinfo.insert({
     contribution: descriptor
   });
-  console.log(descriptor);
 });
 
 console.log("number of descriptors is: " + descriptors.length);
@@ -50,17 +42,16 @@ module.exports = {
   descriptors: descriptors  //make array callable from this module.
 };
 
-
 /*
  * QUICK TEST to verify descriptor dbase
  * is created and functional.
  * Uncomment to use.
  */
-
-db.wordinfo.find({}).exec(function(err,docs) {
+/*
+db.wordinfo.find({}).sort({contribution: 1}).exec(function(err,docs) {
   console.log(docs);
 });
-
+*/
 
 
 /*
@@ -94,7 +85,3 @@ csvConverter.on("end_parsed",function(){
 csvConverter.from(readStream);
 
  */
-
-
-
-
