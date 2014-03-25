@@ -6,7 +6,7 @@
 
 var express = require('express')
   , routes = require('./routes/index')
-  , user = require('./routes/user')
+  , user = require('./routes/descriptions')
   , http = require('http')
   , path = require('path')
   , tingo = require('tingodb')
@@ -47,6 +47,7 @@ app.configure('development', function(){
  * rendering of 'index.jade' compiled to html.
  */
 app.get('/', routes.index(database.db));
+app.post('/', routes.newAchievement(database.db));
 
 /**
  *  Start the server

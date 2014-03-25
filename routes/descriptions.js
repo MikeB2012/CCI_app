@@ -2,7 +2,7 @@
  * This fuction is called to enable data entry.
  */
 
-exports.newachievement = function(db){
+exports.newAchievement = function(db){
   console.log('Called newachievement');
   return function(req,res) {
     

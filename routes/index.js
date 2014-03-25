@@ -12,7 +12,7 @@ exports.index = function(db){
    */
   return function(req,res) {
     db.wordinfo.find({}).sort({contribution: 1}).exec(function(err,docs) {
-      db.userinfo.find({}).sort({TaskNumber: 1}).exec(function(err,tasks) {
+      db.userinfo.find({}).exec(function(err,tasks) {
         console.log(tasks + "tasks");
         res.render('index.jade', { title: 'CCI' , "descripbuttons": docs, "achievements": tasks});
       });
@@ -21,4 +21,40 @@ exports.index = function(db){
   };
 };
 
+exports.newAchievement = function(db){
+  console.log('Called newachievement');
+  return function(req,res) {
+    
+    /*
+     *  Get achievement description and contributions from form.
+     *  Need validation check 
+     */
+    var newAchievement = req.body.statement;
+    var newContribution = req.body.contribution;
 
+    console.log(newAchievement, newContribution);  //Quick look to make sure they are correct.
+    
+    // Insert the values in to the database.
+    
+    db.userinfo.insert([{
+      achievement: newAchievement,
+      contribution: newContribution
+      }], function(err,contribs) {
+        if (err) {
+          res.send("There was a problem entering the data.");
+        } else {
+            console.log('Did insert.');
+            db.userinfo.find({},function(err,contribs){
+              if (err) {
+                console.log('There\'s been an error!');
+              } else {
+                console.log(contribs + contribs.length);
+                db.wordinfo.find({}).sort({index: 1}).exec(function(err,docs) {     //redundant code to populate buttons
+                  res.render('index', { title: 'CCI' , "descripbuttons": docs, "achievements": contribs});
+                  });
+              }
+            });
+        }
+    });
+  };
+};
