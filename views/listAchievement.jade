@@ -5,10 +5,12 @@
       th Contribution
         each ach in achievements
           tr
+            td #{ach.index}
             td #{ach.achievement}
             td #{ach.contribution}
 -else
   br
   br
   br
-  p(style="text-align: center; padding: 3px; font-size: 14pt; color: black; border: 1px solid red; background: LightGoldenRodYellow; border-radius: 15px") Go to the 'Add Achievement' tab and enter three to six achievements.
+  button.btn.btn-xs
+    a(href="/") Go to the 'Add Achievement' tab and enter three to six achievements.

@@ -5,12 +5,12 @@
  */
 
 var express = require('express')
-  , routes = require('./routes/index')
+  , routes = require('./routes')
   , user = require('./routes/descriptions')
   , http = require('http')
   , path = require('path')
-  , tingo = require('tingodb')
-  , database = require('./data/database');
+  , tingo = require('tingodb')              // may use this vice nedb in future
+  , database = require('./data/database');  //creates nedb databases
   ;
 
 /**
@@ -47,7 +47,10 @@ app.configure('development', function(){
  * rendering of 'index.jade' compiled to html.
  */
 app.get('/', routes.index(database.db));
-app.post('/', routes.newAchievement(database.db));
+app.post('/', routes.newAchievement(database.db) );
+app.get('/display', function() {console.log('display');} );
+app.get('/edit', function() {console.log('edit');} );
+app.get('/delete', function() {console.log('delete');} );
 
 /**
  *  Start the server

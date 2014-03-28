@@ -2,10 +2,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #517076;
 }
-h3,
-.tab-content {
-  color: #ff0;
-}
 .row#achievement,
 .row#contribution {
   min-height: 60px;
@@ -30,7 +26,9 @@ main {
 main#article,
 main#nav,
 main#wordtally,
-main#descriptors {
+main#descriptors,
+form,
+table.tr {
   margin: 4px;
   padding: 5px;
   border: 1px solid #5b939d;
@@ -99,9 +97,7 @@ button {
     order: 0;
   }
   main#nav,
-  main#aside,
-  header,
-  footer {
+  main#aside {
     min-height: 50px;
     max-height: auto;
   }

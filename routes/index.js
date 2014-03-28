@@ -29,6 +29,10 @@ exports.newAchievement = function(db){
      *  Get achievement description and contributions from form.
      *  Need validation check 
      */
+    console.log(db.userinfo.length)
+ /*   if (!db.userinfo.achievement) {var achievementIndex = 1;}
+      else {newachievementIndex++;}
+      */
     var newAchievement = req.body.statement;
     var newContribution = req.body.contribution;
 
@@ -58,3 +62,5 @@ exports.newAchievement = function(db){
     });
   };
 };
+
+
